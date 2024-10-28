@@ -1,0 +1,93 @@
+html {
+    scroll-behavior: smooth;
+}
+
+p{
+    text-align: center;
+}
+
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.95em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Une colonne par défaut */
+    gap: 10px; /* Espace de 10px entre les éléments */
+}
+
+figure {
+    margin: 0; /* Supprimer le margin par défaut des figures */
+}
+
+img {
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 35px; /* Circulaire pour la vue tablette */
+    width: 100%;
+    height: auto; /* Maintenir le ratio */
+}
+
+.label {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Vue tablette */
+@media (min-width: 772px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+    }
+
+    figure {
+        border-radius: 50%; /* Bordures circulaires */
+    }
+
+    figure:last-child {
+        grid-column: span 2; /* La dernière figure occupe deux colonnes */
+    }
+}
+
+/* Vue grand écran */
+@media (min-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
+    }
+
+    figure {
+        border-radius: 0; /* Supprimer le rayon de bordure */
+    }
+
+    /* Exemple pour faire occuper une figure sur trois deux colonnes */
+    figure:nth-child(3) {
+        grid-column: span 2; /* La troisième figure occupe deux colonnes */
+    }
+}
+
+/* Requête média pour prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto; /* Supprimer le comportement de défilement */
+    }
+}
+
+/* Palette de couleurs sombre */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333; /* Couleur de fond sombre */
+    }
+
+    figure {
+        background-color: #555; /* Couleur de fond sombre pour les figures */
+        color: #ffeb3b; /* Couleur de police claire */
+        border-color: #000; /* Bordure noire */
+    }
+}
